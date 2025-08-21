@@ -1,0 +1,12 @@
+import { apiKey } from "./apiKey.js";
+
+
+const BASE_URL = 'https://api.themoviedb.org/3'
+
+// axios instance
+export const tmdb = axios.create({
+    baseURL: BASE_URL,
+    params: {
+        api_key: apiKey
+    }
+});

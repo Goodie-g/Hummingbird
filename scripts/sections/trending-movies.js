@@ -1,14 +1,4 @@
-import { apiKey } from "../apiKey.js";
-
-const BASE_URL = 'https://api.themoviedb.org/3'
-
-// axios instance
-const tmdb = axios.create({
-    baseURL: BASE_URL,
-    params: {
-        api_key: apiKey
-    }
-});
+import { tmdb } from "../axios-instance.js";
 
 export const fetchTrendingMovies = async () => {
     try {
