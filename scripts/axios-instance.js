@@ -10,3 +10,9 @@ export const tmdb = axios.create({
         api_key: apiKey
     }
 });
+
+export const endPoints = {
+    trending: '/trending/movie/week',
+    search: '/search/movie'
+    
+}
