@@ -2,13 +2,12 @@ import { fetchTrendingMovies } from "./sections/trending-movies.js";
 import { searchMovie } from "./sections/movie-search.js";
 
 fetchTrendingMovies()
-    .then(response => console.log(response.data))
-    /* .then(response => {
-        const movies = response.data.results;
-        movies.map(movies2 => {
-            console.log(movies2);
-        })
-    }) */
+    .then(response => {
+        const trendingMovies = response.data.results;
+        trendingMovies.map(trendingMovie => {
+            console.log(trendingMovie);
+        });
+    });
 
 const searchItem = document.querySelector('.js-search-item');
 
