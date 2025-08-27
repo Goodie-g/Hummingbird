@@ -13,7 +13,8 @@ export async function searchMovie(query) {
     try {
         const response = await tmdb.get(endPoints.search, { params: { query }, 
         });
-        return response;
+        const { data } = response;
+        return data;
     } catch (error) {
         handleError(error)
     }
