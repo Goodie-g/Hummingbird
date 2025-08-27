@@ -4,6 +4,9 @@ export const fetchTrendingMovies = async () => {
     const cached  = localStorage.getItem("trendingMovies");
     if (cached) {
         console.log(cached);
+        setTimeout(() => {
+            localStorage.removeItem("trendingMovies");
+        }, 1000 * 60 * 60)
         return JSON.parse(cached);
     }
     
