@@ -1,5 +1,8 @@
 import { tmdb, endPoints } from "../axios-instance.js";
 
+const trendingMoviesSection = document.querySelector('.js-trending-movies');
+
+
 export const fetchTrendingMovies = async () => {
     const cached  = localStorage.getItem("trendingMovies");
     if (cached) {
@@ -19,3 +22,18 @@ export const fetchTrendingMovies = async () => {
     }
 };
 
+export function displayTrendingMovies(response) {
+    const trendingMovies = response;
+        trendingMovies.map(trendingMovie => {
+            
+            trendingMoviesSection.innerHTML += `
+                <img src='https://image.tmdb.org/t/p/w500${trendingMovie.poster_path}' alt='${trendingMovie.title}'/>   
+                <a href="movie.html">
+                    <p>${trendingMovie.title}</p>
+                </a> 
+                <p>${trendingMovie.release_date}</p>
+                <p>Rating: ${trendingMovie.vote_average}</p>
+            `;
+        });
+       
+}
