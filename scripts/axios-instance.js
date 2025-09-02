@@ -13,6 +13,6 @@ export const tmdb = axios.create({
 
 export const endPoints = {
     trending: '/trending/movie/week',
-    search: '/search/movie'
-    
+    search: '/search/movie',
+    movieDetails: `/movie`,
 }
