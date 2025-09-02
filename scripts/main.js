@@ -19,8 +19,6 @@ searchItem.addEventListener('keypress', (e) => {
     }
 });
 
-const movieCards = document.querySelectorAll('.js-movie-card');
-
 document.addEventListener('click', (e) => {
     const card = e.target.closest('.js-movie-card');
   if (card) {
@@ -29,7 +27,6 @@ document.addEventListener('click', (e) => {
       category: card.getAttribute('data-movie-category')
     };
 
-    // console.log('clicked card:', e.target.closest('.js-movie-card'));
     localStorage.setItem('selectedMovieId', movie.id);
     localStorage.setItem('selectedMovieCategory', movie.category);
     window.location.href = `movie.html`;

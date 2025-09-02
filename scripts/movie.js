@@ -10,7 +10,6 @@ if (!movieId) {
   tmdb.get(`/movie/${movieId}`)
     .then(res => {
       const movie = res.data;
-      console.log("Movie details:", movie, "from category:", category);
       displayMovieDetails(movie);
     })
     .catch(err => console.error("Error fetching movie:", err));
