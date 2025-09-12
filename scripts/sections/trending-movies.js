@@ -25,17 +25,16 @@ export const fetchTrendingMovies = async () => {
 };
 
 export function displayTrendingMovies(response) {
-    const trendingMovies = response;
-        trendingMovies.map(trendingMovie => {
-            
-            trendingMoviesSection.innerHTML += `
-            <div class="movie-card js-movie-card " data-movie-id='${trendingMovie.id}' data-movie-category='trending'>
-                <img src='https://image.tmdb.org/t/p/w500${trendingMovie.poster_path}' alt='${trendingMovie.title}'/>   
-                <p>${trendingMovie.title}</p>
-                <p>${trendingMovie.release_date}</p>
-                <p>Rating: ${trendingMovie.vote_average}</p>
-            </div>
-            `;
-        });
+    const trendingMovies = response.results;
+    trendingMovies.map(trendingMovie => {
+        trendingMoviesSection.innerHTML += `
+        <div class="movie-card js-movie-card " data-movie-id='${trendingMovie.id}' data-movie-category='trending'>
+            <img src='https://image.tmdb.org/t/p/w500${trendingMovie.poster_path}' alt='${trendingMovie.title}'/>   
+            <p>${trendingMovie.title}</p>
+            <p>${trendingMovie.release_date}</p>
+            <p>Rating: ${trendingMovie.vote_average}</p>
+        </div>
+        `;
+    });
        
 }
