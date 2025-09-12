@@ -2,7 +2,6 @@ import { tmdb, endPoints } from "../axios-instance.js";
 
 const trendingMoviesSection = document.querySelector('.js-trending-movies');
 
-
 export const fetchTrendingMovies = async () => {
     const cached  = localStorage.getItem("trendingMovies");
     if (cached) {
@@ -22,7 +21,7 @@ export const fetchTrendingMovies = async () => {
     } catch (error) {
         handleError(error);
     }
-};
+}
 
 export function displayTrendingMovies(response) {
     const trendingMovies = response.results;

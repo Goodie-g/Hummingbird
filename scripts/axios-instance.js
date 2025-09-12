@@ -15,4 +15,5 @@ export const endPoints = {
     trending: '/trending/movie/week',
     search: '/search/movie',
     movieDetails: `/movie`,
+    popular: '/movie/popular'
 }

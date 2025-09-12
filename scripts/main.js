@@ -1,9 +1,15 @@
 import { fetchTrendingMovies, displayTrendingMovies } from "./sections/trending-movies.js";
+import { fetchPopularMovies, displayPopularMovies } from "./sections/popular-movies.js";
 import { searchMovie } from "./sections/movie-search.js";
 
 fetchTrendingMovies()
     .then(response => {
         displayTrendingMovies(response);
+    });
+
+fetchPopularMovies()
+    .then(response => {
+        displayPopularMovies(response);
     });
 
 const searchItem = document.querySelector('.js-search-item');
