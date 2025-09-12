@@ -1,0 +1,7 @@
+.trending-movies {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px;
+}
