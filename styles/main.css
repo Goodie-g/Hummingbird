@@ -1,4 +1,7 @@
-.trending-movies {
+.trending-movies,
+.popular-movies,
+.now-playing,
+.upcoming-movies {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
@@ -6,18 +9,3 @@
     gap: 10px;
 }
 
-.popular-movies {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 10px;
-    gap: 10px;
-}
-
-.now-playing {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 10px;
-    gap: 10px;
-}
