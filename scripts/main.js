@@ -1,6 +1,7 @@
 import { fetchTrendingMovies, displayTrendingMovies } from "./sections/trending-movies.js";
 import { fetchPopularMovies, displayPopularMovies } from "./sections/popular-movies.js";
 import { searchMovie } from "./sections/movie-search.js";
+import { fetchNowPlayingMovies, displayNowPlayingMovies } from "./sections/now-playing.js";
 
 fetchTrendingMovies()
     .then(response => {
@@ -10,6 +11,11 @@ fetchTrendingMovies()
 fetchPopularMovies()
     .then(response => {
         displayPopularMovies(response);
+    });
+
+fetchNowPlayingMovies()
+    .then(response => {
+        displayNowPlayingMovies(response);
     });
 
 const searchItem = document.querySelector('.js-search-item');

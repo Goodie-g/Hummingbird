@@ -13,3 +13,11 @@
     padding: 10px;
     gap: 10px;
 }
+
+.now-playing {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px;
+}
