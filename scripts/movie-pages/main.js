@@ -1,8 +1,8 @@
-import { fetchTrendingMovies, displayTrendingMovies } from "./sections/trending-movies.js";
-import { fetchPopularMovies, displayPopularMovies } from "./sections/popular-movies.js";
-import { searchMovie } from "./sections/movie-search.js";
-import { fetchNowPlayingMovies, displayNowPlayingMovies } from "./sections/now-playing.js";
-import { fetchUpcomingMovies, displayUpcomingMovies } from "./sections/upcoming.js";
+import { fetchTrendingMovies, displayTrendingMovies } from "../sections/trending-movies.js";
+import { fetchPopularMovies, displayPopularMovies } from "../sections/popular-movies.js";
+import { searchMovie, displayMovieSearchResult } from "../sections/movie-search.js";
+import { fetchNowPlayingMovies, displayNowPlayingMovies } from "../sections/now-playing.js";
+import { fetchUpcomingMovies, displayUpcomingMovies } from "../sections/upcoming.js";
 
 fetchTrendingMovies()
     .then(response => {
@@ -27,8 +27,11 @@ fetchUpcomingMovies()
 const searchItem = document.querySelector('.js-search-item');
 
 document.querySelector('.js-search')
-    .addEventListener('click', () => {
-        searchMovie(searchItem.value)
+    .addEventListener('click', async () => {
+        await searchMovie(searchItem.value)
+            .then(data => {
+                displayMovieSearchResult(data)
+            });
     });
 
 searchItem.addEventListener('keypress', (e) => {

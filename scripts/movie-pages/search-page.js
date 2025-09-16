@@ -1,19 +1,20 @@
 import { tmdb, endPoints } from "../axios-instance.js";
 
-const moviesSection = document.querySelector('.js-movies');
+const movieSearchResults = document.querySelector('.js-search-results');
 
 export const searchMovie = async (query) => {
     try {
         const response = await tmdb.get(endPoints.search, { params: { query }, 
         });
         const { data } = response;
+        displayMovieSearchResult(data);
         return data;
     } catch (error) {
         handleError(error)
     }
 }
 
-export const displayMovieSearchResult = (data) => {
+const displayMovieSearchResult = (data) => {
     moviesSection.innerHTML = '';
     data.results.map(movie => {
         moviesSection.innerHTML += `
