@@ -14,7 +14,7 @@ export const searchMovie = async (query) => {
     }
 }
 
-export const displayMovieSearchResult = (data) => {
+const displayMovieSearchResult = (data) => {
     moviesSection.innerHTML = '';
     data.results.map(movie => {
         moviesSection.innerHTML += `

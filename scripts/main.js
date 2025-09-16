@@ -47,6 +47,6 @@ document.addEventListener('click', (e) => {
 
     localStorage.setItem('selectedMovieId', movie.id);
     localStorage.setItem('selectedMovieCategory', movie.category);
-    window.location.href = `movie.html`;
+    window.location.href = `movie-details-page.html`;
   }
 });
