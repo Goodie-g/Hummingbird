@@ -1,6 +1,5 @@
 import { fetchTrendingMovies, displayTrendingMovies } from "../sections/trending-movies.js";
 import { fetchPopularMovies, displayPopularMovies } from "../sections/popular-movies.js";
-import { searchMovie, displayMovieSearchResult } from "../sections/movie-search.js";
 import { fetchNowPlayingMovies, displayNowPlayingMovies } from "../sections/now-playing.js";
 import { fetchUpcomingMovies, displayUpcomingMovies } from "../sections/upcoming.js";
 
@@ -27,18 +26,20 @@ fetchUpcomingMovies()
 const searchItem = document.querySelector('.js-search-item');
 
 document.querySelector('.js-search')
-    .addEventListener('click', async () => {
-        await searchMovie(searchItem.value)
-            .then(data => {
-                displayMovieSearchResult(data)
-            });
-    });
+    .addEventListener('click', goToSearchPage);
 
 searchItem.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-        searchMovie(searchItem.value)
+        goToSearchPage();
     }
 });
+
+function goToSearchPage() {
+    const query = searchItem.value.trim();
+    if (query) {
+    window.location.href = `search-page.html?query=${encodeURIComponent(query)}`;
+    }
+}
 
 document.addEventListener('click', (e) => {
     const card = e.target.closest('.js-movie-card');

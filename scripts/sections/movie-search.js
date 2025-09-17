@@ -1,6 +1,5 @@
 import { tmdb, endPoints } from "../axios-instance.js";
-
-const moviesSection = document.querySelector('.js-movies');
+import { movieResultsSection } from "../movie-pages/search-page.js";
 
 export const searchMovie = async (query) => {
     try {
@@ -14,9 +13,9 @@ export const searchMovie = async (query) => {
 }
 
 export const displayMovieSearchResult = (data) => {
-    moviesSection.innerHTML = '';
+    movieResultsSection.innerHTML = '';
     data.results.map(movie => {
-        moviesSection.innerHTML += `
+        movieResultsSection.innerHTML += `
         <div class="movie-card js-movie-card" data-movie-id='${movie.id}' data-movie-category='search'>
             <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}' alt='${movie.title}'/>   
             <p>${movie.title}</p>
@@ -26,3 +25,4 @@ export const displayMovieSearchResult = (data) => {
         `;
     });
 }
+

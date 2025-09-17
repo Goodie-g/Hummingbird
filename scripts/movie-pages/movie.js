@@ -1,5 +1,4 @@
-import { tmdb } from "./axios-instance.js";
-
+import { tmdb } from "../axios-instance.js";
 
 const movieId = localStorage.getItem("selectedMovieId");
 const category = localStorage.getItem("selectedCategory");
