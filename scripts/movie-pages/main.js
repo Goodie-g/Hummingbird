@@ -23,7 +23,7 @@ fetchUpcomingMovies()
         displayUpcomingMovies(response);
     });
 
-const searchItem = document.querySelector('.js-search-item');
+export const searchItem = document.querySelector('.js-search-item');
 
 document.querySelector('.js-search')
     .addEventListener('click', goToSearchPage);
@@ -34,14 +34,14 @@ searchItem.addEventListener('keypress', (e) => {
     }
 });
 
-function goToSearchPage() {
+export function goToSearchPage() {
     const query = searchItem.value.trim();
     if (query) {
     window.location.href = `search-page.html?query=${encodeURIComponent(query)}`;
     }
 }
 
-document.addEventListener('click', (e) => {
+function openMovieDetails(e) {
     const card = e.target.closest('.js-movie-card');
   if (card) {
     const movie = {
@@ -53,4 +53,8 @@ document.addEventListener('click', (e) => {
     localStorage.setItem('selectedMovieCategory', movie.category);
     window.location.href = `movie-details-page.html`;
   }
+}
+
+document.addEventListener('click', (e) => {
+    openMovieDetails(e)
 });

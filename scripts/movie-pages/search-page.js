@@ -5,16 +5,12 @@ export const movieResultsSection = document.querySelector('.js-movie-results');
 const params = new URLSearchParams(window.location.search);
 const query = params.get("query");
 
-console.log(query)
-
 async function searchMovie(query) {
     try {
         const response = await tmdb.get(endPoints.search, { params: { query }, 
         });
-        console.log(response)
         const { data } = response;
         displayMovieSearchResults(data);
-        console.log(data)
     } catch(error) {
         handleError(error)
     }
