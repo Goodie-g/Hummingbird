@@ -9,22 +9,20 @@ export const fetchNowPlayingMovies = async () => {
             localStorage.removeItem("nowPlayingMovies");
         }, 1000 * 60 * 60)
         return JSON.parse(cached);
-    }
-
-    try {
-        const { data } = await tmdb.get(endPoints.nowPlaying);
-        localStorage.setItem("nowPlayingMovies", JSON.stringify(data));
-
-        const response = data.results;
-
-        return response;
-    } catch (error) {
-        handleError(error);
+    } else {
+        try {
+            const { data } = await tmdb.get(endPoints.nowPlaying);
+            const response = data.results;
+            localStorage.setItem("nowPlayingMovies", JSON.stringify(response));
+            return response;
+        } catch (error) {
+            handleError(error);
+        }
     }
 } 
 
 export function displayNowPlayingMovies(response) {
-    const nowPlayingMovies = response.results;
+    const nowPlayingMovies = response;
     nowPlayingMovies.map(nowPlayingMovie => {
         nowPlayingMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${nowPlayingMovie.id}' data-movie-category='popular'>

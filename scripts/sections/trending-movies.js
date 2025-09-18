@@ -9,22 +9,20 @@ export const fetchTrendingMovies = async () => {
             localStorage.removeItem("trendingMovies");
         }, 1000 * 60 * 60)
         return JSON.parse(cached);
-    } 
-    
+    }  
     try {
         const { data } = await tmdb.get(endPoints.trending);
-        localStorage.setItem("trendingMovies", JSON.stringify(data));
-
         const response = data.results;
-        
+        localStorage.setItem("trendingMovies", JSON.stringify(response));
         return response;
     } catch (error) {
         handleError(error);
     }
+    
 }
 
 export function displayTrendingMovies(response) {
-    const trendingMovies = response.results;
+    const trendingMovies = response;
     trendingMovies.map(trendingMovie => {
         trendingMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${trendingMovie.id}' data-movie-category='trending'>

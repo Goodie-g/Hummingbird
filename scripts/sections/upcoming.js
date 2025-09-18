@@ -13,10 +13,8 @@ export const fetchUpcomingMovies = async () => {
 
     try {
         const { data } = await tmdb.get(endPoints.upcoming);
-        localStorage.setItem("upcomingMovies", JSON.stringify(data));
-
         const response = data.results;
-
+        localStorage.setItem("upcomingMovies", JSON.stringify(response));
         return response;
     } catch (error) {
         handleError(error);

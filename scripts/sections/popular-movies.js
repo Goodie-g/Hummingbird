@@ -9,22 +9,20 @@ export const fetchPopularMovies = async () => {
             localStorage.removeItem("popularMovies");
         }, 1000 * 60 * 60)
         return JSON.parse(cached);
-    }
-
-    try {
-        const { data } = await tmdb.get(endPoints.popular);
-        localStorage.setItem("popularMovies", JSON.stringify(data));
-
-        const response = data.results;
-
-        return response;
-    } catch (error) {
-        handleError(error);
+    } else {
+        try {
+            const { data } = await tmdb.get(endPoints.popular);
+            const response = data.results;
+            localStorage.setItem("popularMovies", JSON.stringify(response));
+            return response;
+        } catch (error) {
+            handleError(error);
+        }
     }
 } 
 
 export function displayPopularMovies(response) {
-    const popularMovies = response.results;
+    const popularMovies = response;
     popularMovies.map(popularMovie => {
         popularMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${popularMovie.id}' data-movie-category='popular'>
