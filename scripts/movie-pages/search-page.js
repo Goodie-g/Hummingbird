@@ -1,4 +1,5 @@
 import { endPoints, tmdb } from "../axios-instance.js"; 
+import { openMovieDetails } from "./main.js";
 
 const searchItem = document.querySelector('.js-search-item');
 export const movieResultsSection = document.querySelector('.js-movie-results');
@@ -50,3 +51,7 @@ if (query) {
 } else {
   movieResultsSection.innerHTML = "<p>No search query provided.</p>";
 }
+
+document.addEventListener('click', (e) => {
+    openMovieDetails(e)
+});

@@ -41,7 +41,7 @@ export function goToSearchPage() {
     }
 }
 
-function openMovieDetails(e) {
+export function openMovieDetails(e) {
     const card = e.target.closest('.js-movie-card');
   if (card) {
     const movie = {
