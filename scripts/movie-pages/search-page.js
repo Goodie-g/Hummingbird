@@ -6,12 +6,18 @@ export const movieResultsSection = document.querySelector('.js-movie-results');
 const params = new URLSearchParams(window.location.search);
 const query = params.get("query");
 
-async function searchMovie(query) {
+let currentPage = 1;
+let totalPages =  1;
+
+async function searchMovie(query, page = 1) {
     try {
-        const response = await tmdb.get(endPoints.search, { params: { query }, 
+        const response = await tmdb.get(endPoints.search, { params: { query, page }, 
         });
         const { data } = response;
+        totalPages = data.total_pages;
+
         displayMovieSearchResults(data);
+        updatePaginationUI();
     } catch(error) {
         handleError(error)
     }
@@ -21,8 +27,7 @@ document.querySelector('.js-search')
     .addEventListener('click', async () => {
         await searchMovie(searchItem.value)
             .then(data => {
-                displayMovieSearchResults(data);
-                
+                displayMovieSearchResults(data); 
             });
     });
 
@@ -45,6 +50,27 @@ function displayMovieSearchResults(data) {
         `;
     });
 }
+
+function updatePaginationUI() {
+    document.getElementById("page-number").textContent = currentPage;
+
+    document.getElementById("prev").disabled = currentPage === 1;
+    document.getElementById("next").disabled = currentPage === totalPages;
+}
+
+document.getElementById("prev").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    searchMovie(query, currentPage);
+  }
+});
+
+document.getElementById("next").addEventListener("click", () => {
+  if (currentPage < totalPages) {
+    currentPage++;
+    searchMovie(query, currentPage);
+  }
+});
 
 if (query) {
   searchMovie(query)
