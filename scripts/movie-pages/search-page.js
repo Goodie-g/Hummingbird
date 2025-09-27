@@ -1,5 +1,5 @@
 import { endPoints, tmdb } from "../axios-instance.js"; 
-import { openMovieDetails } from "./main.js";
+import { openMovieDetails } from "../utils/openMovieDetails.js";
 
 const searchItem = document.querySelector('.js-search-item');
 export const movieResultsSection = document.querySelector('.js-movie-results');

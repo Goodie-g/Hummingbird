@@ -23,6 +23,7 @@ export const fetchUpcomingMovies = async () => {
 
 export function displayUpcomingMovies(response) {
     const upcomingMovies = response;
+    if (!upcomingMoviesSection) return;
     upcomingMovies.map(upcomingMovie => {
         upcomingMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${upcomingMovie.id}' data-movie-category='popular'>

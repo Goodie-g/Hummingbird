@@ -23,6 +23,7 @@ export const fetchNowPlayingMovies = async () => {
 
 export function displayNowPlayingMovies(response) {
     const nowPlayingMovies = response;
+    if (!nowPlayingMoviesSection) return;
     nowPlayingMovies.map(nowPlayingMovie => {
         nowPlayingMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${nowPlayingMovie.id}' data-movie-category='popular'>

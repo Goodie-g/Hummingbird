@@ -23,6 +23,7 @@ export const fetchPopularMovies = async () => {
 
 export function displayPopularMovies(response) {
     const popularMovies = response;
+    if (!popularMoviesSection) return;
     popularMovies.map(popularMovie => {
         popularMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${popularMovie.id}' data-movie-category='popular'>

@@ -23,6 +23,7 @@ export const fetchTrendingMovies = async () => {
 
 export function displayTrendingMovies(response) {
     const trendingMovies = response;
+    if (!trendingMoviesSection) return;
     trendingMovies.map(trendingMovie => {
         trendingMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${trendingMovie.id}' data-movie-category='trending'>
