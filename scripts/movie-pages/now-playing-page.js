@@ -17,6 +17,7 @@ async function fetchNowPlayingPage(page=1) {
         const { data } = await tmdb.get(endPoints.nowPlaying, {params: {page}});
         const response = data.results;
         localStorage.setItem("nowPlaying", JSON.stringify(response));
+        totalPages = data.total_pages;
         return response;
     } catch (error) {
         handleError(error);

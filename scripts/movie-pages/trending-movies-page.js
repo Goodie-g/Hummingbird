@@ -17,6 +17,7 @@ async function fetchTrendingMoviesPage(page=1) {
         const { data } = await tmdb.get(endPoints.trending, {params:{ page}});
         const response = data.results;
         localStorage.setItem("trendingMovies", JSON.stringify(response));
+        totalPages = data.total_pages;
         return response;
     } catch (error) {
         handleError(error);
