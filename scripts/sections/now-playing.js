@@ -12,6 +12,7 @@ export const fetchNowPlayingMovies = async () => {
     } else {
         try {
             const { data } = await tmdb.get(endPoints.nowPlaying);
+            console.log(data)
             const response = data.results;
             localStorage.setItem("nowPlayingMovies", JSON.stringify(response));
             return response;

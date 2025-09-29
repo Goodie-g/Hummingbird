@@ -1,22 +1,20 @@
 import { tmdb, endPoints } from "../utils/axios-instance.js";
 import { openMovieDetails } from "../utils/openMovieDetails.js";
 import "../utils/search-feature.js";
+import { setCache, getCache } from "../utils/cacheHandling.js";
 
 let currentPage = 1;
 let totalPages =  1;
 
 async function fetchNowPlayingPage(page=1) {
-    const cached  = localStorage.getItem("nowPlaying");
-    if (cached) {
-        setTimeout(() => {
-            localStorage.removeItem("nowPlaying");
-        }, 1000 * 60 * 60);
-        return JSON.parse(cached);
-    }  
+    const cacheKey = `nowPlaying-${page}`;
+    const cached  = localStorage.getItem(`nowPlaying${page}`);
+     if (cached) return cached;
+    
     try {
         const { data } = await tmdb.get(endPoints.nowPlaying, {params: {page}});
         const response = data.results;
-        localStorage.setItem("nowPlaying", JSON.stringify(response));
+        setCache(cacheKey, response);
         totalPages = data.total_pages;
         return response;
     } catch (error) {
