@@ -3,6 +3,7 @@ import { fetchPopularMovies, displayPopularMovies } from "../sections/popular-mo
 import { fetchNowPlayingMovies, displayNowPlayingMovies } from "../sections/now-playing.js";
 import { fetchUpcomingMovies, displayUpcomingMovies } from "../sections/upcoming.js";
 import { openMovieDetails } from "../utils/openMovieDetails.js";
+import "../utils/search-feature.js";
 
 fetchTrendingMovies()
     .then(response => {
@@ -23,24 +24,6 @@ fetchUpcomingMovies()
     .then(response => {
         displayUpcomingMovies(response);
     });
-
-export const searchItem = document.querySelector('.js-search-item');
-
-document.querySelector('.js-search')
-    .addEventListener('click', goToSearchPage);
-
-searchItem.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        goToSearchPage();
-    }
-});
-
-export function goToSearchPage() {
-    const query = searchItem.value.trim();
-    if (query) {
-    window.location.href = `search-page.html?query=${encodeURIComponent(query)}`;
-    }
-}
 
 // export function openMovieDetails(e) {
 //     const card = e.target.closest('.js-movie-card');

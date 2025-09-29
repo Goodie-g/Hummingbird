@@ -1,5 +1,6 @@
 import { tmdb, endPoints } from "../utils/axios-instance.js";
 import { openMovieDetails } from "../utils/openMovieDetails.js";
+import "../utils/search-feature.js";
 
 let currentPage = 1;
 let totalPages =  1;

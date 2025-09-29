@@ -1,5 +1,5 @@
 import { tmdb } from "../utils/axios-instance.js";
-import { goToSearchPage, searchItem } from "./main.js";
+import "../utils/search-feature.js";
 
 const movieId = localStorage.getItem("selectedMovieId");
 const category = localStorage.getItem("selectedCategory");
@@ -27,12 +27,3 @@ function displayMovieDetails(movie) {
     </div>
   `;
 }
-
-document.querySelector('.js-search')
-    .addEventListener('click', goToSearchPage);
-
-searchItem.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        goToSearchPage();
-    }
-});
