@@ -1,4 +1,4 @@
-import { tmdb, endPoints } from "../axios-instance.js";
+import { tmdb, endPoints } from "../utils/axios-instance.js";
 
 const nowPlayingMoviesSection = document.querySelector('.js-now-playing');
 

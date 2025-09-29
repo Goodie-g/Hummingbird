@@ -1,4 +1,4 @@
-import { tmdb, endPoints } from "../axios-instance.js";
+import { tmdb, endPoints } from "../utils/axios-instance.js";
 
 const upcomingMoviesSection = document.querySelector('.js-upcoming-movies');
 

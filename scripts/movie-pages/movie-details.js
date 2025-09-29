@@ -1,4 +1,4 @@
-import { tmdb } from "../axios-instance.js";
+import { tmdb } from "../utils/axios-instance.js";
 import { goToSearchPage, searchItem } from "./main.js";
 
 const movieId = localStorage.getItem("selectedMovieId");

@@ -1,4 +1,4 @@
-import { endPoints, tmdb } from "../axios-instance.js"; 
+import { endPoints, tmdb } from "../utils/axios-instance.js"; 
 import { openMovieDetails } from "../utils/openMovieDetails.js";
 
 const searchItem = document.querySelector('.js-search-item');

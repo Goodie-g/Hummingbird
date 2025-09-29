@@ -1,4 +1,4 @@
-import { tmdb, endPoints } from "../axios-instance.js";
+import { tmdb, endPoints } from "../utils/axios-instance.js";
 import { openMovieDetails } from "../utils/openMovieDetails.js";
 
 let currentPage = 1;
@@ -13,7 +13,7 @@ async function fetchTrendingMoviesPage(page=1) {
         return JSON.parse(cached);
     }  
     try {
-        const { data } = await tmdb.get(endPoints.trending, {params: page});
+        const { data } = await tmdb.get(endPoints.trending, {params:{ page}});
         const response = data.results;
         localStorage.setItem("trendingMovies", JSON.stringify(response));
         return response;
@@ -28,14 +28,14 @@ function displayTrendingMoviesPage(response) {
     const trendingMovies = response;
     if (!trendingMoviesSection) return;
     trendingMovies.map(trendingMovie => {
-        trendingMoviesSection.innerHTML += `
+    trendingMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${trendingMovie.id}' data-movie-category='trending'>
             <img src='https://image.tmdb.org/t/p/w500${trendingMovie.poster_path}' alt='${trendingMovie.title}'/>   
             <p>${trendingMovie.title}</p>
             <p>${trendingMovie.release_date}</p>
             <p>Rating: ${trendingMovie.vote_average}</p>
         </div>
-        `;
+    `;
     });
        
 }
