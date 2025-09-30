@@ -7,15 +7,12 @@ let currentPage = 1;
 let totalPages =  1;
 
 async function fetchTrendingMoviesPage(page=1) {
-    const cacheKey = `trendingMovie-${page}`;
-    const cached  = getCache(cacheKey)
-    if (cached) return cached;
-
     try {
         const { data } = await tmdb.get(endPoints.trending, {params:{ page}});
         const response = data.results;
-        setCache(cacheKey, response);
+        
         totalPages = data.total_pages;
+
         return response;
     } catch (error) {
         handleError(error);
@@ -27,6 +24,7 @@ const trendingMoviesSection = document.querySelector('.js-trending-movies');
 function displayTrendingMoviesPage(response) {
     const trendingMovies = response;
     if (!trendingMoviesSection) return;
+    trendingMoviesSection.innerHTML = '';
     trendingMovies.map(trendingMovie => {
     trendingMoviesSection.innerHTML += `
         <div class="movie-card js-movie-card " data-movie-id='${trendingMovie.id}' data-movie-category='trending'>

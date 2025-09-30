@@ -7,15 +7,12 @@ let currentPage = 1;
 let totalPages =  1;
 
 async function fetchNowPlayingPage(page=1) {
-    const cacheKey = `nowPlaying-${page}`;
-    const cached  = localStorage.getItem(`nowPlaying${page}`);
-     if (cached) return cached;
     
     try {
         const { data } = await tmdb.get(endPoints.nowPlaying, {params: {page}});
         const response = data.results;
-        setCache(cacheKey, response);
         totalPages = data.total_pages;
+
         return response;
     } catch (error) {
         handleError(error);
