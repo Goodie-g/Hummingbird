@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Movies</title>
+</head>
+<body>
+    <h1><a href="main.html">home</a></h1>
+    <input type="text" class="js-search-item">
+    <button class="js-search">search</button>
+    <section class="js-movies">
+        <h1>Upcoming Movies</h1>
+        <section class="upcoming-movies js-upcoming-movies"></section>
+    </section>
+
+    
+    <div id="pagination">
+        <button id="prev">Previous</button>
+        <span id="page-number">1</span>
+        <button id="next">Next</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts/movie-pages/upcoming-movies-page.js" type="module"></script>
+</body>
+</html>
